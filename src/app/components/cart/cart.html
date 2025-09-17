@@ -1,0 +1,22 @@
+<div class="container my-3">
+  <h3>Shopping Cart</h3>
+
+  <div *ngIf="items.length === 0" class="alert alert-info">Your cart is empty</div>
+
+  <div *ngFor="let item of items" class="row align-items-center py-2 border-bottom">
+    <div class="col-2"><img [src]="item.product.image" style="height:60px; object-fit:contain;"></div>
+    <div class="col-5">{{ item.product.title }}</div>
+    <div class="col-2">
+      <input type="number" class="form-control" [(ngModel)]="item.quantity" (change)="updateQty(item)">
+    </div>
+    <div class="col-2">${{ item.product.price }}</div>
+    <div class="col-1">
+      <button class="btn btn-sm btn-danger" (click)="remove(item.product.id)">x</button>
+    </div>
+  </div>
+
+  <div class="text-end mt-3" *ngIf="items.length > 0">
+    <h5>Total: ${{ total | number:'1.2-2' }}</h5>
+    <a class="btn btn-success" routerLink="/checkout">Proceed to Checkout</a>
+  </div>
+</div>
