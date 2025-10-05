@@ -1,0 +1,26 @@
+<div class="container my-3">
+  <h3>Checkout</h3>
+  <form [formGroup]="checkoutForm" (ngSubmit)="onSubmit()">
+    <div class="mb-2">
+      <input class="form-control" placeholder="Name" formControlName="name">
+    </div>
+    <div class="mb-2">
+      <input class="form-control" placeholder="Email" formControlName="email">
+    </div>
+    <div class="mb-2">
+      <textarea class="form-control" placeholder="Address" formControlName="address"></textarea>
+    </div>
+    <div class="mb-3">
+      <select class="form-select" formControlName="payment">
+        <option value="cod">Cash on delivery</option>
+        <option value="card">Card (demo)</option>
+      </select>
+    </div>
+
+    <button class="btn btn-primary" type="submit" [disabled]="checkoutForm.invalid">Place Order</button>
+  </form>
+
+  <div class="alert alert-success mt-3" *ngIf="success">
+    Order placed successfully! Redirecting to home...
+  </div>
+</div>

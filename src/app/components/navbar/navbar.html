@@ -1,0 +1,19 @@
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+  <div class="container">
+    <a class="navbar-brand" routerLink="/" style="font-family: Verdana, Geneva, Tahoma, sans-serif;">Nazir Ecom Shop</a>
+    <div class="collapse navbar-collapse">
+      <ul class="navbar-nav me-auto">
+        <li class="nav-item"><a class="nav-link" routerLink="/">Products</a></li>
+      </ul>
+      <ul class="navbar-nav">
+        <li class="nav-item">
+          <a class="nav-link position-relative" routerLink="/cart">
+            Cart
+            <span class="badge bg-primary ms-1" *ngIf="(cartCount$ | async) as c">{{ c }}</span>
+          </a>
+        </li>
+      </ul>
+    </div>
+  </div>
+</nav>
+<router-outlet></router-outlet>
